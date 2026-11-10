@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Histórico | Estação Meteorológica</title>
+
+    <link rel="stylesheet" href="css/historico.css">
+</head>
+<body>
+    <header class="topo">
+        <div>
+            <p class="identificacao">PROJETO DE IOT</p>
+            <h1>Histórico de medições</h1>
+            <p class="subtitulo">Consulte os registros recebidos pela estação.</p>
+        </div>
+
+        <nav class="navegacao">
+            <a href="index.html">Início</a>
+            <a class="ativo" href="historico.html">Histórico</a>
+        </nav>
+    </header>
+
+    <main class="conteudo">
+        <section class="cabecalho-pagina">
+            <div>
+                <h2>Dados armazenados</h2>
+                <p>Os gráficos e a tabela são carregados a partir do banco SQLite.</p>
+            </div>
+
+            <button id="btn-atualizar" type="button">Atualizar histórico</button>
+        </section>
+
+        <p id="mensagem-status" class="mensagem-status">
+            Carregando medições...
+        </p>
+
+        <section class="grade-graficos">
+            <article class="card grafico-card">
+                <h3>Temperatura (°C)</h3>
+                <div class="area-grafico">
+                    <canvas id="grafico-temperatura"></canvas>
+                </div>
+            </article>
+
+            <article class="card grafico-card">
+                <h3>Umidade (%)</h3>
+                <div class="area-grafico">
+                    <canvas id="grafico-umidade"></canvas>
+                </div>
+            </article>
+
+            <article class="card grafico-card">
+                <h3>Pressão atmosférica (hPa)</h3>
+                <div class="area-grafico">
+                    <canvas id="grafico-pressao"></canvas>
+                </div>
+            </article>
+
+            <article class="card grafico-card">
+                <h3>Luminosidade (%)</h3>
+                <div class="area-grafico">
+                    <canvas id="grafico-luminosidade"></canvas>
+                </div>
+            </article>
+
+            <article class="card grafico-card">
+                <h3>Qualidade do ar (valor bruto)</h3>
+                <div class="area-grafico">
+                    <canvas id="grafico-ar"></canvas>
+                </div>
+            </article>
+
+            <article class="card grafico-card">
+                <h3>Chuva (mm)</h3>
+                <div class="area-grafico">
+                    <canvas id="grafico-chuva"></canvas>
+                </div>
+            </article>
+        </section>
+
+        <section class="card tabela-card">
+            <div class="titulo-tabela">
+                <div>
+                    <h2>Últimas medições</h2>
+                    <p id="total-registros">0 registros</p>
+                </div>
+            </div>
+
+            <div class="tabela-scroll">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Data e hora</th>
+                            <th>Temperatura</th>
+                            <th>Umidade</th>
+                            <th>Pressão</th>
+                            <th>Luminosidade</th>
+                            <th>Qualidade do ar</th>
+                            <th>Chuva</th>
+                        </tr>
+                    </thead>
+                    <tbody id="corpo-tabela">
+                        <tr>
+                            <td colspan="7">Aguardando dados...</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <footer class="rodape">
+            <p>Estação Meteorológica Inteligente · Projeto acadêmico</p>
+        </footer>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="js/historico.js"></script>
+</body>
+</html>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estação Meteorológica Inteligente</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+</head>
+<body>
+    <header class="topo">
+        <div>
+            <p class="identificacao">PROJETO DE IOT</p>
+            <h1>Estação Meteorológica</h1>
+            <p class="subtitulo">Monitoramento inteligente do ambiente</p>
+        </div>
+
+        <nav class="navegacao">
+            <a class="ativo" href="index.html">Início</a>
+            <a href="historico.html">Histórico</a>
+        </nav>
+    </header>
+
+    <main class="conteudo">
+        <section class="resumo">
+            <div>
+                <h2>Painel geral</h2>
+                <p>Acompanhe as medições recebidas pela estação.</p>
+            </div>
+
+            <div class="status">
+                <span id="status-indicador" class="indicador desconectado"></span>
+                <span id="status-texto">Aguardando conexão</span>
+            </div>
+        </section>
+
+        <section class="sensores">
+            <article class="card sensor-card">
+                <span class="icone">🌡️</span>
+                <p class="nome-sensor">Temperatura</p>
+                <h3 id="temperatura">-- °C</h3>
+            </article>
+
+            <article class="card sensor-card">
+                <span class="icone">💧</span>
+                <p class="nome-sensor">Umidade</p>
+                <h3 id="umidade">-- %</h3>
+            </article>
+
+            <article class="card sensor-card">
+                <span class="icone">🌬️</span>
+                <p class="nome-sensor">Pressão atmosférica</p>
+                <h3 id="pressao">-- hPa</h3>
+            </article>
+
+            <article class="card sensor-card">
+                <span class="icone">☀️</span>
+                <p class="nome-sensor">Luminosidade</p>
+                <h3 id="luminosidade">-- %</h3>
+            </article>
+
+            <article class="card sensor-card">
+                <span class="icone">🌫️</span>
+                <p class="nome-sensor">Qualidade do ar</p>
+                <h3 id="qualidade-ar">--</h3>
+            </article>
+
+            <article class="card sensor-card">
+                <span class="icone">🌧️</span>
+                <p class="nome-sensor">Chuva</p>
+                <h3 id="chuva">-- mm</h3>
+            </article>
+        </section>
+
+        <section class="duas-colunas">
+            <article class="card painel">
+                <div class="titulo-painel">
+                    <div>
+                        <h2>Alertas ambientais</h2>
+                        <p>Condições que precisam de atenção.</p>
+                    </div>
+                    <span class="icone-painel">⚠️</span>
+                </div>
+                <div id="lista-alertas" class="lista-alertas">
+                    <p>⏳ Aguardando medições...</p>
+                </div>
+            </article>
+
+            <article class="card painel">
+                <div class="titulo-painel">
+                    <div>
+                        <h2>Última atualização</h2>
+                        <p>Horário do último recebimento MQTT.</p>
+                    </div>
+                    <span class="icone-painel">🕒</span>
+                </div>
+                <p id="ultima-atualizacao" class="ultima-atualizacao">
+                    Aguardando primeira medição...
+                </p>
+            </article>
+        </section>
+
+        <section class="card painel localizacao">
+            <div class="titulo-painel">
+                <div>
+                    <h2>Localização da estação</h2>
+                    <p>Posição aproximada exibida pelo navegador.</p>
+                </div>
+                <span class="icone-painel">📍</span>
+            </div>
+
+            <p id="coordenadas" class="coordenadas">
+                Solicitando localização...
+            </p>
+            <div id="mapa"></div>
+        </section>
+    </main>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>
