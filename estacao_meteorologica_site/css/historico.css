@@ -1,3 +1,4 @@
+
 * {
     margin: 0;
     padding: 0;
@@ -5,13 +6,13 @@
 }
 
 :root {
-    --fundo: #0f172a;
-    --card: #1e293b;
-    --card-claro: #263449;
-    --texto: #f8fafc;
-    --texto-secundario: #94a3b8;
-    --azul: #38bdf8;
-    --borda: rgba(148, 163, 184, 0.14);
+    --fundo: #141820;
+    --card: #202631;
+    --card-claro: #2b3442;
+    --texto: #e5e7eb;
+    --texto-secundario: #a1a8b3;
+    --azul: #7da9c7;
+    --borda: #343c49;
 }
 
 body {
@@ -21,26 +22,27 @@ body {
     font-family: Arial, Helvetica, sans-serif;
 }
 
+/* Cabeçalho */
+
 .topo {
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 24px;
-    padding: 30px max(6%, calc((100% - 1200px) / 2));
-    background: #111c31;
+    padding: 25px max(6%, calc((100% - 1200px) / 2));
+    background: #1b202a;
     border-bottom: 1px solid var(--borda);
 }
 
 .identificacao {
     color: var(--azul);
-    font-size: 11px;
+    font-size: 12px;
     font-weight: bold;
-    letter-spacing: 2px;
     margin-bottom: 8px;
 }
 
 .topo h1 {
-    font-size: clamp(24px, 4vw, 32px);
+    font-size: 28px;
     margin-bottom: 7px;
 }
 
@@ -60,8 +62,7 @@ body {
     color: var(--texto-secundario);
     text-decoration: none;
     padding: 10px 15px;
-    border-radius: 8px;
-    transition: 0.2s;
+    border-radius: 5px;
 }
 
 .navegacao a:hover,
@@ -70,9 +71,11 @@ body {
     background: var(--card-claro);
 }
 
+/* Conteúdo */
+
 .conteudo {
     width: min(1200px, 88%);
-    margin: 32px auto;
+    margin: 30px auto;
 }
 
 .cabecalho-pagina {
@@ -89,21 +92,20 @@ body {
     margin-bottom: 7px;
 }
 
+/* Botões */
+
 button {
-    background: var(--azul);
-    color: #082f49;
-    border: none;
-    border-radius: 8px;
-    padding: 11px 16px;
+    background: #364c60;
+    color: white;
+    border: 1px solid #465a6e;
+    border-radius: 5px;
+    padding: 10px 15px;
     font-size: 14px;
-    font-weight: bold;
     cursor: pointer;
-    transition: 0.2s;
 }
 
 button:hover {
-    filter: brightness(1.1);
-    transform: translateY(-1px);
+    background: #425c73;
 }
 
 .mensagem-status {
@@ -111,6 +113,8 @@ button:hover {
     font-size: 13px;
     margin-bottom: 18px;
 }
+
+/* Gráficos */
 
 .grade-graficos {
     display: grid;
@@ -122,8 +126,7 @@ button:hover {
 .card {
     background: var(--card);
     border: 1px solid var(--borda);
-    border-radius: 14px;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+    border-radius: 6px;
 }
 
 .grafico-card {
@@ -140,6 +143,8 @@ button:hover {
     width: 100%;
     height: 250px;
 }
+
+/* Tabela */
 
 .tabela-card {
     padding: 22px;
@@ -172,7 +177,7 @@ td {
 th {
     color: var(--azul);
     font-weight: bold;
-    background: rgba(15, 23, 42, 0.45);
+    background: #252d39;
 }
 
 td {
@@ -180,8 +185,10 @@ td {
 }
 
 tbody tr:hover {
-    background: rgba(148, 163, 184, 0.06);
+    background: #29313e;
 }
+
+/* Rodapé */
 
 .rodape {
     text-align: center;
@@ -189,6 +196,8 @@ tbody tr:hover {
     font-size: 12px;
     padding: 28px 0 10px;
 }
+
+/* Responsividade */
 
 @media (max-width: 800px) {
     .topo {
@@ -205,6 +214,10 @@ tbody tr:hover {
     .conteudo {
         width: 92%;
         margin-top: 24px;
+    }
+
+    .topo h1 {
+        font-size: 24px;
     }
 
     .cabecalho-pagina {

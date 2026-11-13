@@ -162,7 +162,6 @@ function preencherTabela(historico) {
         return;
     }
 
-    // Mais recentes primeiro na tabela.
     const recentes = [...historico].reverse();
 
     recentes.forEach(medicao => {

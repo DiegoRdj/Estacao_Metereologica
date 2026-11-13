@@ -1,3 +1,4 @@
+
 * {
     margin: 0;
     padding: 0;
@@ -5,15 +6,15 @@
 }
 
 :root {
-    --fundo: #0f172a;
-    --card: #1e293b;
-    --card-claro: #263449;
-    --texto: #f8fafc;
-    --texto-secundario: #94a3b8;
-    --azul: #38bdf8;
-    --verde: #22c55e;
-    --vermelho: #ef4444;
-    --borda: rgba(148, 163, 184, 0.14);
+    --fundo: #141820;
+    --card: #202631;
+    --card-claro: #2b3442;
+    --texto: #e5e7eb;
+    --texto-secundario: #a1a8b3;
+    --azul: #7da9c7;
+    --verde: #4caf50;
+    --vermelho: #d9534f;
+    --borda: #343c49;
 }
 
 body {
@@ -23,26 +24,27 @@ body {
     font-family: Arial, Helvetica, sans-serif;
 }
 
+/* Cabeçalho */
+
 .topo {
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 24px;
-    padding: 30px max(6%, calc((100% - 1200px) / 2));
-    background: #111c31;
+    padding: 25px max(6%, calc((100% - 1200px) / 2));
+    background: #1b202a;
     border-bottom: 1px solid var(--borda);
 }
 
 .identificacao {
     color: var(--azul);
-    font-size: 11px;
+    font-size: 12px;
     font-weight: bold;
-    letter-spacing: 2px;
     margin-bottom: 8px;
 }
 
 .topo h1 {
-    font-size: clamp(24px, 4vw, 32px);
+    font-size: 28px;
     margin-bottom: 7px;
 }
 
@@ -62,8 +64,7 @@ body {
     color: var(--texto-secundario);
     text-decoration: none;
     padding: 10px 15px;
-    border-radius: 8px;
-    transition: 0.2s;
+    border-radius: 5px;
 }
 
 .navegacao a:hover,
@@ -72,9 +73,11 @@ body {
     background: var(--card-claro);
 }
 
+/* Conteúdo */
+
 .conteudo {
     width: min(1200px, 88%);
-    margin: 32px auto;
+    margin: 30px auto;
 }
 
 .resumo {
@@ -90,6 +93,8 @@ body {
     font-size: 20px;
     margin-bottom: 7px;
 }
+
+/* Status da conexão */
 
 .status {
     display: flex;
@@ -109,13 +114,13 @@ body {
 
 .indicador.conectado {
     background: var(--verde);
-    box-shadow: 0 0 12px rgba(34, 197, 94, 0.7);
 }
 
 .indicador.desconectado {
     background: var(--vermelho);
-    box-shadow: 0 0 12px rgba(239, 68, 68, 0.45);
 }
+
+/* Sensores */
 
 .sensores {
     display: grid;
@@ -127,19 +132,12 @@ body {
 .card {
     background: var(--card);
     border: 1px solid var(--borda);
-    border-radius: 14px;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+    border-radius: 6px;
 }
 
 .sensor-card {
-    padding: 22px;
-    min-height: 155px;
-    transition: transform 0.2s, border-color 0.2s;
-}
-
-.sensor-card:hover {
-    transform: translateY(-3px);
-    border-color: rgba(56, 189, 248, 0.4);
+    padding: 20px;
+    min-height: 150px;
 }
 
 .icone {
@@ -156,6 +154,8 @@ body {
     font-size: 27px;
     color: var(--azul);
 }
+
+/* Painéis */
 
 .duas-colunas {
     display: grid;
@@ -186,6 +186,8 @@ body {
     font-size: 23px;
 }
 
+/* Alertas */
+
 .lista-alertas p {
     color: var(--texto-secundario);
     margin: 9px 0;
@@ -193,8 +195,10 @@ body {
 }
 
 .lista-alertas .alerta {
-    color: #fbbf24;
+    color: #e6ba65;
 }
+
+/* Informações */
 
 .ultima-atualizacao,
 .coordenadas {
@@ -203,13 +207,17 @@ body {
     line-height: 1.6;
 }
 
+/* Mapa */
+
 #mapa {
     width: 100%;
     height: 340px;
     margin-top: 15px;
-    border-radius: 10px;
+    border-radius: 5px;
     z-index: 1;
 }
+
+/* Rodapé */
 
 .rodape {
     text-align: center;
@@ -217,6 +225,8 @@ body {
     font-size: 12px;
     padding: 12px 0 28px;
 }
+
+/* Responsividade */
 
 @media (max-width: 800px) {
     .sensores {
@@ -233,6 +243,10 @@ body {
     .conteudo {
         width: 92%;
         margin-top: 24px;
+    }
+
+    .topo h1 {
+        font-size: 24px;
     }
 
     .resumo {

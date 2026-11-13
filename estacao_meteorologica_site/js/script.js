@@ -1,6 +1,6 @@
 const API = "http://127.0.0.1:5000/dados";
 
-// Busca os dados do Flask e atualiza o painel
+
 async function atualizarDashboard() {
     const indicador = document.getElementById("status-indicador");
     const textoStatus = document.getElementById("status-texto");
@@ -14,7 +14,7 @@ async function atualizarDashboard() {
 
         const dados = await resposta.json();
 
-        // Mantém os últimos valores recebidos nos cards, mesmo offline.
+
         if (dados.temp_dht !== undefined && dados.temp_dht !== null) {
             document.getElementById("temperatura").textContent =
                 `${dados.temp_dht} °C`;
@@ -42,7 +42,7 @@ async function atualizarDashboard() {
             verificarAlertas(dados);
         }
 
-        // O Flask informa se houve mensagem MQTT nos últimos 10 segundos.
+
         if (dados.online === true) {
             indicador.classList.add("conectado");
             indicador.classList.remove("desconectado");
@@ -74,7 +74,6 @@ async function atualizarDashboard() {
 }
 
 
-// Verifica condições extremas
 function verificarAlertas(dados) {
     const lista = document.getElementById("lista-alertas");
     const alertas = [];
@@ -109,7 +108,6 @@ function verificarAlertas(dados) {
 }
 
 
-// Inicializa o mapa
 const mapa = L.map("mapa").setView([-23.5505, -46.6333], 13);
 
 L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
@@ -118,7 +116,6 @@ L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
 
 let marcador = null;
 
-// Solicita a localização do dispositivo
 if ("geolocation" in navigator) {
     navigator.geolocation.getCurrentPosition(
         posicao => {
@@ -150,7 +147,5 @@ if ("geolocation" in navigator) {
         "Seu navegador não suporta geolocalização.";
 }
 
-
-// Primeira atualização e atualização automática a cada 3 segundos
 atualizarDashboard();
 setInterval(atualizarDashboard, 3000);
