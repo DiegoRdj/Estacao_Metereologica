@@ -1,3 +1,4 @@
+
 const API_HISTORICO = "http://127.0.0.1:5000/historico";
 
 const graficos = {};
@@ -35,22 +36,19 @@ const configuracoesGraficos = [
     },
     {
         id: "grafico-chuva",
-        campo: "chuva_mm",
-        titulo: "Chuva",
-        unidade: "mm"
+        campo: "chuva_bruto",
+        titulo: "Sensor de chuva",
+        unidade: "ADC"
     }
 ];
 
 function obterDataMedicao(medicao) {
-    // O backend salva o timestamp original enviado pelo ESP32.
-    // Caso não exista, usa o horário atual apenas como alternativa.
     let timestamp = Number(medicao.ts);
 
     if (!Number.isFinite(timestamp) || timestamp <= 0) {
         return "Sem data";
     }
 
-    // Aceita timestamp em segundos ou milissegundos.
     if (timestamp < 100000000000) {
         timestamp *= 1000;
     }
@@ -71,13 +69,25 @@ function obterRotulo(medicao, indice) {
 function criarOuAtualizarGrafico(config, historico) {
     const canvas = document.getElementById(config.id);
 
+    if (!canvas) {
+        console.warn("Canvas não encontrado:", config.id);
+        return;
+    }
+
     const labels = historico.map((medicao, indice) =>
         obterRotulo(medicao, indice)
     );
 
     const valores = historico.map(medicao => {
-        const valor = Number(medicao[config.campo]);
-        return Number.isFinite(valor) ? valor : null;
+        const valor = medicao[config.campo];
+
+        if (valor === null || valor === undefined || valor === "") {
+            return null;
+        }
+
+        const numero = Number(valor);
+
+        return Number.isFinite(numero) ? numero : null;
     });
 
     if (graficos[config.id]) {
@@ -158,6 +168,16 @@ function preencherTabela(historico) {
     recentes.forEach(medicao => {
         const linha = document.createElement("tr");
 
+        const statusChuva =
+            medicao.chuva_status ??
+            (
+                medicao.chuva_detectada === true
+                    ? "Chuva detectada"
+                    : medicao.chuva_detectada === false
+                        ? "Sem chuva"
+                        : "--"
+            );
+
         const valores = [
             obterDataMedicao(medicao),
             medicao.temp_dht ?? "--",
@@ -165,7 +185,7 @@ function preencherTabela(historico) {
             medicao.pressao ?? "--",
             medicao.luz_pct ?? "--",
             medicao.mq_bruto ?? "--",
-            medicao.chuva_mm ?? "--"
+            `${statusChuva} (${medicao.chuva_bruto ?? "--"})`
         ];
 
         valores.forEach(valor => {
@@ -215,8 +235,10 @@ async function carregarHistorico() {
 
     } catch (erro) {
         console.error("Erro ao carregar histórico:", erro);
+
         mensagem.textContent =
             "Não foi possível carregar o histórico. Verifique se o Flask está ligado.";
+
     } finally {
         botao.disabled = false;
     }

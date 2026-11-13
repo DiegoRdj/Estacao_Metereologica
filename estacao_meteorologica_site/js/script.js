@@ -32,7 +32,12 @@ async function atualizarDashboard() {
                 dados.mq_bruto ?? "--";
 
             document.getElementById("chuva").textContent =
-                `${dados.chuva_mm ?? "--"} mm`;
+                dados.chuva_status ??
+                (dados.chuva_detectada === true
+                    ? "Chuva detectada"
+                    : dados.chuva_detectada === false
+                        ? "Sem chuva"
+                        : "--");
 
             verificarAlertas(dados);
         }
