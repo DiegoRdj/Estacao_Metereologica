@@ -138,6 +138,8 @@ Pinagem de referência configurada no firmware:
 - Chart.js
 - Leaflet / OpenStreetMap, quando habilitado na versão do dashboard.
 
+![Página principal](imagens/pag_princ.gif)
+
 ---
 
 ## Comunicação MQTT
@@ -200,6 +202,8 @@ Suas principais responsabilidades são:
 |---|---|
 | `/dados` | Retorna a medição mais recente e informações da estação. |
 | `/historico` | Retorna os registros armazenados no banco de dados. |
+
+![Histórico](imagens/hist.gif)
 
 ### Banco de dados
 
