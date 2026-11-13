@@ -15,7 +15,7 @@ Os dados são processados pelo microcontrolador, enviados pela rede Wi-Fi utiliz
 
 Posteriormente, as informações são armazenadas em um banco de dados SQLite e disponibilizadas em uma interface web para consulta e acompanhamento das medições.
 
-
+![Demonstração do projeto](imagens/imagem_projeto.jpeg)
 
 ### Objetivos
 
@@ -116,6 +116,8 @@ Pinagem de referência configurada no firmware:
 - Sensores eletrônicos
 - Comunicação I²C
 - Leitura analógica ADC
+
+![Dados](imagens/dados_Th.gif)
 
 ### Comunicação
 - Wi-Fi
@@ -235,6 +237,8 @@ Entre os recursos previstos ou disponíveis, conforme a versão executada:
 - Tabela de medições armazenadas.
 
 O Chart.js é utilizado para representar graficamente a evolução das medições.
+
+
 
 ---
 
