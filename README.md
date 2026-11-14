@@ -4,7 +4,7 @@ Sistema de monitoramento ambiental desenvolvido com **Internet das Coisas (IoT)*
 
 Projeto acadêmico desenvolvido por estudantes da **Universidade Paulista (UNIP)**, com o objetivo de aplicar conceitos de IoT e Cidades Inteligentes na coleta e disponibilização de informações ambientais.
 
-
+LINK DO VÍDEO: https://youtu.be/X0IBz682_OU
 ---
 
 ## Sobre o projeto
